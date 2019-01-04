@@ -9,7 +9,7 @@ class LogStash::Filters::DateToLocal < LogStash::Filters::Base
 
 
   config :source, :validate => :string, :default => LogStash::Event::TIMESTAMP
-  config :target, :validate => :string, :default => "localdate"
+  config :target, :validate => :string, :default => "ltimestamp"
 
 
   public
@@ -21,9 +21,9 @@ class LogStash::Filters::DateToLocal < LogStash::Filters::Base
   def filter(event)
 
     if @source
-#      dt = DateTime.new(@source)
-#      local_time = dt.new_offset(DateTime.now.offset)
-      event.set(@target,event.get(@source))
+      dt = DateTime.parse(event.get(@source))
+      local_time = dt.new_offset(DateTime.now.offset)
+      event.set(@target, local_time)
     end
 
 
