@@ -22,9 +22,8 @@ class LogStash::Filters::DateToLocal < LogStash::Filters::Base
 
     if @source
       dt = DateTime.new(@source)
-	  local_time = dt.new_offset(DateTime.now.offset)
+      local_time = dt.new_offset(DateTime.now.offset)
       event.set(@target,local_time.strftime('%d %b %H:%M:%S.%L %z'))
-      @logger.debug? && @logger.debug("Message is now: #{event.get("message")}")
     end
 
 
