@@ -21,9 +21,9 @@ class LogStash::Filters::DateToLocal < LogStash::Filters::Base
   def filter(event)
 
     if @source
-      dt = DateTime.new(@source)
-      local_time = dt.new_offset(DateTime.now.offset)
-      event.set(@target,local_time.strftime('%d %b %H:%M:%S.%L %z'))
+#      dt = DateTime.new(@source)
+#      local_time = dt.new_offset(DateTime.now.offset)
+      event.set(@target,@source)
     end
 
 
