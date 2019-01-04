@@ -1,6 +1,6 @@
 # encoding: utf-8
 require "logstash/filters/base"
-require "logstash/namespace"
+#require "logstash/namespace"
 require "date"
 
 class LogStash::Filters::DateToLocal < LogStash::Filters::Base
