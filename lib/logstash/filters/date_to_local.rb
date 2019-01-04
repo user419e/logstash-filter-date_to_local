@@ -23,7 +23,8 @@ class LogStash::Filters::DateToLocal < LogStash::Filters::Base
     if @source
       local_time = DateTime.parse(event.get(@source)).new_offset(DateTime.now.offset
  #     local_time = dt.new_offset(DateTime.now.offset)
-      event.set(@target, local_time.strftime('%d %b %H:%M:%S.%L %z'))
+        local_time = local_time.strftime('%d %b %H:%M:%S.%L %z')
+      event.set(@target, local_time)
     end
 
 
