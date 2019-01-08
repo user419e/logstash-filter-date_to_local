@@ -26,7 +26,7 @@ class LogStash::Filters::DateToLocal < LogStash::Filters::Base
         local_time = local_time.strftime("%d %b %H:%M:%S.%L %z")
         event.set(@target, local_time)
       rescue Exception => e
-        event.tag("_rubyexception")
+        event.tag("_date_to_local_filter_exception")
       end
     end
 
