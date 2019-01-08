@@ -21,12 +21,13 @@ class LogStash::Filters::DateToLocal < LogStash::Filters::Base
   def filter(event)
 
     if @source
-      local_time = DateTime.parse(event.get(@source).to_s).new_offset(DateTime.now.offset)
- #     local_time = dt.new_offset(DateTime.now.offset)
-      local_time = local_time.strftime("%d %b %H:%M:%S.%L %z")
-      event.set(@target, local_time)
+      begin
+        local_time = DateTime.parse(event.get(@source).to_s).new_offset(DateTime.now.offset)
+        local_time = local_time.strftime("%d %b %H:%M:%S.%L %z")
+        event.set(@target, local_time)
       rescue Exception => e
         event.tag("_rubyexception")
+      end
     end
 
 
