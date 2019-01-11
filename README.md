@@ -9,7 +9,7 @@ Plugin translates UTC time into logstash host's timezone
 ## Usage
 This plugin supports the following configuration options:
 ```
-Setting     Input type  Required    Default
+**Setting     Input type  Required    Default**
 source      string      No          "@timestamp"
 target      string      No          "ltimestamp"
 ```
