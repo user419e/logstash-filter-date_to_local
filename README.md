@@ -7,8 +7,8 @@ This is a plugin for [Logstash](https://github.com/elastic/logstash).
 Plugin translates UTC time into logstash host's timezone
 
 ## Usage
-```sh
 This plugin supports the following configuration options:
+```
 Setting     Input type  Required    Default
 source      string      No          "@timestamp"
 target      string      No          "ltimestamp"
