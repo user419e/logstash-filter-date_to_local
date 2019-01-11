@@ -4,7 +4,7 @@
 
 This is a plugin for [Logstash](https://github.com/elastic/logstash).
 
-Plugin translates UTC time into logstash host's timezone
+Plugin translates UTC time into logstash host's timezone. Output type - String.
 
 ## Usage
 This plugin supports the following configuration options:
@@ -18,10 +18,21 @@ Example:
 ```ruby
 filter {
   date_to_local {
-    source => "event_timestamp"
-    target => "[@metadata][timestamp]"
+    source => "message"
+    target => "[event][timestamp]"
   }
 }
+
+
+{
+       "message" => "2019-01-11T10:50:53.497Z",
+      "@version" => "1",
+    "@timestamp" => 2019-01-11T10:54:09.822Z,
+         "event" => {
+        "timestamp" => "11 Jan 12:50:53.497 +0200"
+    }
+}
+
 ```
 
 ## Documentation
