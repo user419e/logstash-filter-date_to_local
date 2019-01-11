@@ -4,7 +4,23 @@
 
 This is a plugin for [Logstash](https://github.com/elastic/logstash).
 
-It is fully free and fully open source. The license is Apache 2.0, meaning you are pretty much free to use it however you want in whatever way.
+Plugin translates UTC time into logstash host's timezone
+
+## Usage
+This plugin supports the following configuration options:
+Setting     Input type  Required    Default
+source      string      No          "@timestamp"
+target      string      No          "ltimestamp"
+
+Example:
+```ruby
+filter {
+  date_to_local {
+    source => "event_timestamp"
+    target => "[@metadata][timestamp]"
+  }
+}
+```
 
 ## Documentation
 
